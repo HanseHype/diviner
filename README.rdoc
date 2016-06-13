@@ -1,9 +1,43 @@
 = diviner
 
-Description goes here.
+Inspired by http://bernhardwenzel.com/blog/2013/08/26/google-shopping-taxonomy-algorithm/
+
+It matches from a list of categories the right category to a Product.
+
+A Python version is here: https://github.com/BernhardWenzel/google-taxonomy-matcher
+
+
+== Example
+
+The keys are the method names from your product model.
+
+  keys = [:name, :description, :categories]
+
+You tell in weights how important is that attribute.
+
+  weights = {categories: 3, name: 2, description: 1}
+
+
+That is how you use the matcher
+
+  matcher = Deviner::Match.new(weights)
+  matcher.model(product, keys)
+
+  matcher.match(Category.all) # result will be the matching category
+
+
+If your category parent is not category or the name from your category is not name, then you can change it, by giving it in the options fields
+
+  options = {language: 'de',
+             query_method: :name,
+             parent_method: :category,
+             has_parent: true}
+
+  matcher = Deviner::Match.new(weights)
+
 
 == Contributing to diviner
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
@@ -16,4 +50,3 @@ Description goes here.
 
 Copyright (c) 2016 Ferhat Ziba. See LICENSE.txt for
 further details.
-
