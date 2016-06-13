@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "diviner"
-  gem.homepage = "http://github.com/fero46/diviner"
+  gem.homepage = "http://github.com/hansehype/diviner"
   gem.license = "MIT"
   gem.summary = "Category Predictor for an Product"
   gem.description = "It matches from a list of categories the right category to a Product."
