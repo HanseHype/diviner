@@ -17,7 +17,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "diviner"
   gem.homepage = "http://github.com/fero46/diviner"
   gem.license = "MIT"
-  gem.summary = "It matches from a list of categories the right category to a Product."
+  gem.summary = "Category Predictor for an Product"
   gem.description = "It matches from a list of categories the right category to a Product."
   gem.email = "fero.ziba@gmail.com"
   gem.authors = ["Ferhat Ziba"]
