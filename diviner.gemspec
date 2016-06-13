@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_diviner.rb"
   ]
-  s.homepage = "http://github.com/fero46/diviner"
+  s.homepage = "http://github.com/hansehype/diviner"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.4.8"
   s.summary = "Category Predictor for an Product"
