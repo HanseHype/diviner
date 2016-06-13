@@ -2,8 +2,8 @@ source "https://rubygems.org"
 # Add dependencies required to use your gem here.
 # Example:
 #   gem "activesupport", ">= 2.3.5"
-gem 'ruby-stemmer'
-gem 'picky'
+gem 'ruby-stemmer', ">= 0.9.6"
+gem 'picky', ">= 4.31.3"
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
