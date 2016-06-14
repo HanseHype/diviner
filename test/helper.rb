@@ -67,14 +67,13 @@ taxonomies.each_line do |line|
     stack.pop
   end
 
+  stack = [] if names.length == 1
+
   parent = stack.last
   category = TestCategory.new(names.last,parent)
   stack.push(category)
   @categories << category
 end
-
-
-puts @categories
 
 class MyTestCategory
 

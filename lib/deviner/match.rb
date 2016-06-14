@@ -62,6 +62,10 @@ module Deviner
         end
       end
 
+      result = result.reject{ |x| x[:value] != highest_value}
+      puts "ACHTUNG"
+      puts result
+
       return selected_category
 
     end
@@ -81,24 +85,30 @@ module Deviner
       query = prepare_query(query)
       return  cache[query] if cache[query] != nil
       search = Picky::Search.new @index
-      result = search.search(query)
+      subqueries = query.split(" ")
+      total = 0
+      for subquery in subqueries
+        result = search.search(query)
+        total+=result.total
+      end
       if options[:has_parent]
         parent = category.send(options[:parent_method])
       else
         parent = nil
       end
-      cache[query] = result.total + score(parent)
+      cache[query] = total + score(parent)
     end
 
     def prepare_query query
-      query.gsub(",", " OR ").
-            gsub("&", " OR ").
+      query.gsub(",", " ").
+            gsub("&", " ").
             gsub("ü", "ue").
             gsub("ö", "oe").
             gsub("ä", "ae").
             gsub("Ü", "Ue").
             gsub("Ö", "Oe").
-            gsub("Ä", "Ae")
+            gsub("Ä", "Ae").
+            gsub("  ", " ")
     end
 
   end

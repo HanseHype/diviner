@@ -21,4 +21,18 @@ class TestDiviner < Test::Unit::TestCase
     matcher.model(model, keys)
     assert_equal "Massageöle", matcher.match(MyTestCategory.categories).name
   end
+
+  should "find more complex testcase" do
+    Product = Struct.new :id, :name, :description, :categories
+    keys = [:name, :description, :categories]
+    weights = {categories: 3, name: 2, description: 1}
+    model = Product.new(1,  "HiPP Gemüserisotto mit zarter Bio-Pute, 250 g",
+                            "HiPP Gemüserisotto mit zarter Bio-Pute enthält schonend dampfgegarte Zutaten mit kindgerechter Würzung und Omega-3 Fettsäuren aus Bio-Rapsöl. Die Mahlzeit ist geeignet für eine sichere und ausgewogene Ernährung Ihres Babys ab dem12. Monat.      mit Stückchenfürs Kauenlernen  salzreduziert  glutenfrei  ohne Zusatz von Aromen, Konservierungsstoffen, Farbstoffen, Verdickungsmitteln",
+                         "Baby & Kind Babynahrung Kindernahrung Beikost")
+    matcher = Deviner::Match.new(weights)
+    matcher.model(model, keys)
+    assert_equal "Babynahrung", matcher.match(MyTestCategory.categories).name
+  end
+
+
 end
