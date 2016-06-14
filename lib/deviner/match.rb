@@ -63,9 +63,6 @@ module Deviner
       end
 
       result = result.reject{ |x| x[:value] != highest_value}
-      puts "ACHTUNG"
-      puts result
-
       return selected_category
 
     end
