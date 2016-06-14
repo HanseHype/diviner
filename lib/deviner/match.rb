@@ -47,6 +47,8 @@ module Deviner
       clear_cache
     end
 
+
+    # Return nil if no matches found
     def match(categories)
       result = []
       for category in categories
@@ -56,13 +58,14 @@ module Deviner
 
       highest_value = result.map{|x| x[:value]}.sort.last
       selected_category = nil
-      result.each do |hash|
-        if hash[:value] == highest_value
-          selected_category = hash[:category]
+      if highest_value > 0
+        result.each do |hash|
+          if hash[:value] == highest_value
+            selected_category = hash[:category]
+          end
         end
       end
 
-      result = result.reject{ |x| x[:value] != highest_value}
       return selected_category
 
     end
